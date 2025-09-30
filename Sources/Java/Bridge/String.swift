@@ -2,7 +2,7 @@ import JavaRuntime
 import JavaTypes
 
 extension String: JavaValue {
-    public typealias JNIType = jstring
+    public typealias JNIType = jstring?
     
     public init(jni value: JNIType, in environment: JNIEnvironment) {
         var isCopy: jboolean = 0

@@ -151,7 +151,7 @@ public extension JavaStorable where JNIType == jlong {
     }
 }
 
-public extension JavaStorable where JNIType == jobject {
+public extension JavaStorable where JNIType == jobject? {
     static func jniFieldGet(in environment: JNIEnvironment) -> JNIFieldGet<JNIType> {
         environment.interface.GetObjectField
     }

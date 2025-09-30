@@ -46,16 +46,16 @@ public extension JavaIntractable {
     @_disfavoredOverload
     func call<each Argument: JavaValue, Result: JavaValue>(
         method: String,
-        arguments: (repeat each Argument) = (),
+        arguments: repeat each Argument,
         result: Result.Type = Result.self
     ) throws -> Result {
-        let result = try call(method: method, arguments: (repeat each arguments), result: Result.self)
+        let result = try call(method: method, arguments: repeat each arguments, result: Result.self)
         return try Result(jni: result, in: environment)
     }
     
     func call<each Argument: JavaValue, Result: JavaCallable>(
         method: String,
-        arguments: (repeat each Argument) = (),
+        arguments: repeat each Argument,
         result: Result.Type = Lookup.self
     ) throws -> Result.JNIType {
         let thisClass = environment.interface.GetObjectClass(environment, this)!
@@ -81,17 +81,17 @@ public extension JavaIntractable {
     static func call<each Argument: JavaValue, Result: JavaValue>(
         in environment: JNIEnvironment,
         method: String,
-        arguments: (repeat each Argument) = (),
+        arguments: repeat each Argument,
         result: Result.Type = Result.self
     ) throws -> Result {
-        let result = try call(in: environment, method: method, arguments: (repeat each arguments), result: Result.self)
+        let result = try call(in: environment, method: method, arguments: repeat each arguments, result: Result.self)
         return try Result(jni: result, in: environment)
     }
     
     static func call<each Argument: JavaValue, Result: JavaCallable>(
         in environment: JNIEnvironment,
         method: String,
-        arguments: (repeat each Argument) = (),
+        arguments: repeat each Argument,
         result: Result.Type = Lookup.self
     ) throws -> Result.JNIType {
         try withClass(in: environment, { thisClass in

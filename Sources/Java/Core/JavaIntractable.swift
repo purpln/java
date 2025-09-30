@@ -1,7 +1,7 @@
 import JavaRuntime
 import JavaTypes
 
-public protocol JavaIntractable: JavaValue where JNIType == jobject {
+public protocol JavaIntractable: JavaValue where JNIType == jobject? {
     static var javaClassName: String { get }
     
     init(holder: JavaReference)
@@ -11,7 +11,7 @@ public protocol JavaIntractable: JavaValue where JNIType == jobject {
 
 public extension JavaIntractable {
     init(jni value: JNIType, in environment: JNIEnvironment) throws {
-        let holder = try JavaReference(object: value, in: environment)
+        let holder = try JavaReference(object: value!, in: environment)
         self.init(holder: holder)
     }
     

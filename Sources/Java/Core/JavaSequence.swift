@@ -118,7 +118,7 @@ public extension JavaSequence where JNIType == jlong {
     }
 }
 
-public extension JavaSequence where JNIType == jobject {
+public extension JavaSequence where JNIType == jobject? {
     static func jniNewArray(in environment: JNIEnvironment) -> JNINewArray {
         return { environment, size in
             try! withClass(in: environment) { jniClass in

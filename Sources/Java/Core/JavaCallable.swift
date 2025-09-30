@@ -85,7 +85,7 @@ public extension JavaCallable where JNIType == jlong {
     }
 }
 
-public extension JavaCallable where JNIType == jobject {
+public extension JavaCallable where JNIType == jobject? {
     static func jniMethodCall(in environment: JNIEnvironment) -> JNIMethodCall<JNIType> {
         environment.interface.CallObjectMethodA
     }
