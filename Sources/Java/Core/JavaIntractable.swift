@@ -28,3 +28,13 @@ public extension JavaIntractable {
         JavaType(className: javaClassName)
     }
 }
+
+public extension JavaIntractable {
+    var this: jobject {
+        holder.reference!
+    }
+    
+    var environment: JNIEnvironment {
+        holder.environment
+    }
+}

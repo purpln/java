@@ -1,16 +1,6 @@
 import JavaRuntime
 import JavaTypes
 
-private extension JavaIntractable {
-    var this: jobject {
-        holder.reference!
-    }
-    
-    var environment: JNIEnvironment {
-        holder.environment
-    }
-}
-
 extension JNIEnvironment {
     func translatingExceptions<Result>(
         _ body: () -> Result?
@@ -124,8 +114,8 @@ public extension JavaIntractable {
     }
 }
 
-extension JavaIntractable {
-    public subscript<Property: JavaValue>(
+public extension JavaIntractable {
+    subscript<Property: JavaValue>(
         property: String,
         type: Property.Type = Property.self
     ) -> Property {
@@ -158,7 +148,7 @@ extension JavaIntractable {
         }
     }
     
-    public static subscript<Property: JavaValue>(
+    static subscript<Property: JavaValue>(
         environment: JNIEnvironment,
         property: String,
         type: Property.Type = Property.self
