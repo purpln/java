@@ -29,7 +29,7 @@ package struct ThreadLocalStorage: ~Copyable {
     package typealias Value = UnsafeMutableRawPointer?
 #endif
     
-    package typealias OnThreadExit = @convention(c) (_: Value) -> ()
+    package typealias OnThreadExit = @convention(c) (_: Value) -> Void
     
 #if canImport(Darwin) || canImport(Bionic) || canImport(Glibc) || canImport(Musl)
     private var key: PlatformKey
